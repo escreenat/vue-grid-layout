@@ -1,5 +1,5 @@
 <template>
-    <div ref="item" class="vue-grid-layout" :style="mergedStyle">
+    <div ref="item" class="vue-grid-layout" >
         <slot></slot>
         <grid-item class="vue-grid-placeholder"
                    v-show="isDragging"
@@ -251,9 +251,9 @@
                 }
             },
             updateHeight: function () {
-                this.mergedStyle = {
-                    height: this.containerHeight()
-                };
+                // this.mergedStyle = {
+                //     height: this.containerHeight()
+                // };
             },
             onWindowResize: function () {
                 if (this.$refs !== null && this.$refs.item !== null && this.$refs.item !== undefined) {
@@ -323,7 +323,7 @@
                 }
                 l.h = h;
                 l.w = w;
-            
+
                 if (this.responsive){
                     this.responsiveGridLayout();
                 }else{
@@ -334,7 +334,7 @@
 
                 if (eventName === 'resizeend') this.$emit('layout-updated', this.layout);
             },
-            
+
             // finds or generates new layouts for set breakpoints
             responsiveGridLayout(){
 
@@ -345,8 +345,8 @@
                 if(this.lastBreakpoint != null && !this.layouts[this.lastBreakpoint])
                     this.layouts[this.lastBreakpoint] = cloneLayout(this.layout);
 
-                // Find or generate a new layout. 
-                let layout = findOrGenerateResponsiveLayout( 
+                // Find or generate a new layout.
+                let layout = findOrGenerateResponsiveLayout(
                     this.originalLayout,
                     this.layouts,
                     this.breakpoints,
@@ -355,7 +355,7 @@
                     newCols,
                     this.verticalCompact
                 );
-                
+
                 // Store the new layout.
                 this.layouts[newBreakpoint] = layout;
 
@@ -372,7 +372,7 @@
                 this.layouts = {};
             },
 
-            // find difference in layouts 
+            // find difference in layouts
             findDifference(layout, originalLayout){
 
                 //Find values that are in result1 but not in result2

@@ -80,7 +80,7 @@
         cursor: sw-resize;
         right: auto;
     }
-    
+
     .vue-grid-item.disable-userselect {
         user-select: none;
     }
